@@ -194,6 +194,9 @@ class VOCMApMetric(mx.metric.EvalMetric):
 
     def _recall_prec(self):
         """ get recall and precision from internal records """
+
+        assert len(self._n_pos.keys()) > 0, "No data availabile yet, call update() first!"
+
         n_fg_class = max(self._n_pos.keys()) + 1
         prec = [None] * n_fg_class
         rec = [None] * n_fg_class
